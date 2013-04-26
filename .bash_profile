@@ -27,9 +27,11 @@ fi
 # export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 #export PYTHONPATH=:
 
-VIRTENVWRAP=/usr/local/share/python/virtualenvwrapper.sh
+PYSHARE=/usr/local/share/python
+VIRTENVWRAP=$PYSHARE/virtualenvwrapper.sh
 if [ -f "$VIRTENVWRAP" ]; then  
 	source $VIRTENVWRAP
+	export PATH=$PYSHARE:$PATH
 fi
 
 export TM_RST2HTML=`which rst2html.py`
