@@ -28,8 +28,8 @@ fi
 #export PYTHONPATH=:
 
 VIRTENVWRAP=/usr/local/share/python/virtualenvwrapper.sh
-if [ -f "VIRTENVWRAP" ]; then  
-	source /usr/local/share/python/virtualenvwrapper.sh
+if [ -f "$VIRTENVWRAP" ]; then  
+	source $VIRTENVWRAP
 fi
 
 export TM_RST2HTML=`which rst2html.py`
