@@ -12,11 +12,14 @@ if [ -d $ANDROID_NDK ]; then
 	export PATH=$PATH:$ANDROID_NDK
 fi
 
-BREW_USR=`brew --prefix`
+if [ `which brew` ]; then
+	LOCAL=`brew --prefix`
+	export PATH=$LOCAL/bin:$PATH
+else
+	LOCAL=/usr/local
+fi
 
-export PATH=$BREW_USR/bin:$PATH
-
-MYSQL_HOME=$BREW_USR/mysql
+MYSQL_HOME=$LOCAL/mysql
 if [ -d $MYSQL_HOME ]; then
 	export PATH=$PATH:$MYSQL_HOME/bin
 fi
@@ -34,13 +37,16 @@ if [ -f "$VIRTENVWRAP" ]; then
 	export PATH=$PYSHARE:$PATH
 fi
 
-export TM_RST2HTML=`which rst2html.py`
+TM_RST2HTML=`which rst2html.py`
+if [ "$TM_RST2HTML" ]; then
+	export TM_RST2HTML
+fi
 
 # export PATH=/usr/local/cuda/bin:$PATH
 # export LD_LIBRARY_PATH=/usr/local/cuda/lib:$LD_LIBRARY_PATH
 
-if [ -f $BREW_USR/etc/bash_completion ]; then
-    source $BREW_USR/etc/bash_completion
+if [ -f $LOCAL/etc/bash_completion ]; then
+    source $LOCAL/etc/bash_completion
 	
 fi
 
