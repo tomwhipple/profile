@@ -57,4 +57,6 @@ export PS1='\[\033[00;33m\]\t\n\[\033[00;37m\]\u@\h\[\033[00m\]:\[\033[00;36m\]\
 
 set -o vi
 
-eval "$(rbenv init -)"
+if [ `which rbenv` ]; then
+    eval "$(rbenv init -)"
+fi
