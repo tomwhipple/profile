@@ -1,8 +1,10 @@
-export ARCHFLAGS="-arch x86_64"
+#export ARCHFLAGS="-arch x86_64"
 
-ANDROID_SDK=$HOME/android-sdk-macosx
-if [ -d $ANDROID_SDK ]; then
-	export ANDROID_SDK
+if [ -d "$HOME/android/sdk" ]; then
+	export ANDROID_SDK="$HOME/android/sdk"
+	export PATH=$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools	
+elif [[ "$ANDROID_SDK" && -d "$HOME/$ANDROID_SDK" ]]; then
+	export ANDROID_SDK=$HOME/android-sdk-macosx
 	export PATH=$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools
 fi
 
@@ -33,8 +35,12 @@ fi
 PYSHARE=/usr/local/share/python
 VIRTENVWRAP=$PYSHARE/virtualenvwrapper.sh
 if [ -f "$VIRTENVWRAP" ]; then  
+	# OSX/Brew
 	source $VIRTENVWRAP
 	export PATH=$PYSHARE:$PATH
+elif [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
+	# Raspian
+	source /usr/local/bin/virtualenvwrapper.sh
 fi
 
 GOPATH="$HOME/Documents/go"
@@ -68,6 +74,6 @@ export PS1='\[\033[00;33m\]\t\n\[\033[00;37m\]\u@\h\[\033[00m\]:\[\033[00;36m\]\
 
 set -o vi
 
-eval "$(rbenv init -)"
-
-export PATH=$PATH:/Applications/HP_Fortify/HP_Fortify_SCA_and_Apps_3.80/bin
+if [ `which rbenv` ]; then
+    eval "$(rbenv init -)"
+fi
