@@ -32,14 +32,15 @@ fi
 # export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 #export PYTHONPATH=:
 
-PYSHARE=/usr/local/share/python
-VIRTENVWRAP=$PYSHARE/virtualenvwrapper.sh
-if [ -f "$VIRTENVWRAP" ]; then  
-	# OSX/Brew
-	source $VIRTENVWRAP
-	export PATH=$PYSHARE:$PATH
-elif [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
-	# Raspian
+# PYSHARE=/usr/local/share/python
+# VIRTENVWRAP=$PYSHARE/virtualenvwrapper.sh
+# if [ -f "$VIRTENVWRAP" ]; then  
+# 	# OSX/Brew
+# 	source $VIRTENVWRAP
+# 	export PATH=$PYSHARE:$PATH
+# elif
+if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
+	# typical
 	source /usr/local/bin/virtualenvwrapper.sh
 fi
 
