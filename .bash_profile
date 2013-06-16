@@ -37,6 +37,17 @@ if [ -f "$VIRTENVWRAP" ]; then
 	export PATH=$PYSHARE:$PATH
 fi
 
+GOPATH="$HOME/Documents/go"
+if [ -d "$GOPATH" ]; then
+	export GOPATH
+	export PATH="$PATH:$GOPATH/bin"
+fi
+
+#GOHOME=$LOCAL/go
+#if [ -f "$GOHOME" ]; then
+#	export PATH="$GOHOME/bin:$PATH"
+#fi
+
 TM_RST2HTML=`which rst2html.py`
 if [ "$TM_RST2HTML" ]; then
 	export TM_RST2HTML
@@ -58,3 +69,5 @@ export PS1='\[\033[00;33m\]\t\n\[\033[00;37m\]\u@\h\[\033[00m\]:\[\033[00;36m\]\
 set -o vi
 
 eval "$(rbenv init -)"
+
+export PATH=$PATH:/Applications/HP_Fortify/HP_Fortify_SCA_and_Apps_3.80/bin
