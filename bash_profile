@@ -1,9 +1,8 @@
-#export ARCHFLAGS="-arch x86_64"
 
 if [ -d "$HOME/android/sdk" ]; then
 	export ANDROID_SDK="$HOME/android/sdk"
 	export PATH=$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools	
-elif [[ "$ANDROID_SDK" && -d "$HOME/$ANDROID_SDK" ]]; then
+elif [ -d "$HOME/android-sdk-macosx" ]; then
 	export ANDROID_SDK=$HOME/android-sdk-macosx
 	export PATH=$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools
 fi
