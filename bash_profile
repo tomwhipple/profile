@@ -7,7 +7,7 @@ elif [ -d "$HOME/android-sdk-macosx" ]; then
 	export PATH=$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools
 fi
 
-ANDROID_NDK=$HOME/android-ndk-r8b
+ANDROID_NDK=$HOME/android-ndk-r8e
 if [ -d $ANDROID_NDK ]; then
 	export ANDROID_NDK
 	export PATH=$PATH:$ANDROID_NDK
