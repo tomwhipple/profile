@@ -25,9 +25,13 @@ if [ -d $MYSQL_HOME ]; then
 	export PATH=$PATH:$MYSQL_HOME/bin
 fi
 
-if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
-	# typical
-	source /usr/local/bin/virtualenvwrapper.sh
+PYTHON_VER=`python -c 'import sys; print "python{0}.{1}".format(sys.version_info[0],sys.version_info[1])'`
+if [[ "$PYTHON_VER" != "" ]]; then
+	export PYTHONPATH="/usr/local/lib/$PYTHON_VER/site-packages/:$PYTHONPATH"
+	if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
+		# typical
+		source /usr/local/bin/virtualenvwrapper.sh
+	fi
 fi
 
 GOHOME=$LOCAL/go
