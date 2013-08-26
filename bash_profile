@@ -31,6 +31,8 @@ if [[ "$PYTHON_VER" != "" ]]; then
 	if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
 		# typical
 		source /usr/local/bin/virtualenvwrapper.sh
+	elif [ -f "/usr/local/share/python/virtualenvwrapper.sh" ]; then
+		source /usr/local/share/python/virtualenvwrapper.sh
 	fi
 fi
 
