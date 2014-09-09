@@ -1,10 +1,10 @@
 
 if [ -d "$HOME/android/sdk" ]; then
-	export ANDROID_SDK="$HOME/android/sdk"
-	export PATH=$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools	
+	export ANDROID_HOME="$HOME/android/sdk"
+	export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools	
 elif [ -d "$HOME/android-sdk-macosx" ]; then
-	export ANDROID_SDK=$HOME/android-sdk-macosx
-	export PATH=$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools
+	export ANDROID_HOME=$HOME/android-sdk-macosx
+	export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 fi
 
 ANDROID_NDK=$HOME/android-ndk-r8e
