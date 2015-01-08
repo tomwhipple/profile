@@ -59,7 +59,13 @@ if [ -f $LOCAL/etc/bash_completion ]; then
 	
 fi
 
-source $HOME/profile/git-completion.bash
+if [ -f "$(brew --prefix bash-git-prompt)/share/gitprompt.sh" ]; then
+	GIT_PROMPT_THEME=Default
+	source "$(brew --prefix bash-git-prompt)/share/gitprompt.sh"
+else
+	# Probably somewhat out of date...
+	source $HOME/profile/git-completion.bash
+fi
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 export PS1='\[\033[00;33m\]\t\n\[\033[00;37m\]\u@\h\[\033[00m\]:\[\033[00;36m\]\W\[\033[00m\]\[\033[00;33m\]$(__git_ps1 " (%s)")\[\033[00m\]\$ '
