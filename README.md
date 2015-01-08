@@ -8,6 +8,6 @@ This profile is designed to work on substantially similar user accounts accross 
 Setup
 -----
 
-1. Clone this repo to new account home
-2. `ln -s profile/bash_profile .bash_profile`
+1. Clone this repo
+2. `$ profile/setup.sh`
 3. Start working!

@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
-# TODO: Figure out PROFILE_DIR dynamically
-PROFILE_DIR="$HOME/profile"
+REL_DIR=`dirname $0`
+cd $REL_DIR
 
-ln -s "$PROFILE_DIR/profile" .profile
+PROFILE_DIR=`pwd`
+cd $HOME
+
+echo 'exec /bin/bash -l' > .profile
 ln -s "$PROFILE_DIR/bash_profile" .bash_profile
