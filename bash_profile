@@ -75,3 +75,8 @@ set -o vi
 if [ `which rbenv` ]; then
     eval "$(rbenv init -)"
 fi
+
+if [ -f "$HOME/profile/tokens.private" ]; then
+	source "$HOME/profile/tokens.private"
+fi
+
