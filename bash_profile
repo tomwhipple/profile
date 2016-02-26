@@ -56,7 +56,6 @@ fi
 
 if [ -f $LOCAL/etc/bash_completion ]; then
     source $LOCAL/etc/bash_completion
-	
 fi
 
 if [ -f "$(brew --prefix bash-git-prompt)/share/gitprompt.sh" ]; then
@@ -80,3 +79,10 @@ if [ -f "$HOME/profile/tokens.private" ]; then
 	source "$HOME/profile/tokens.private"
 fi
 
+
+### Added by the Heroku Toolbelt
+if [ -d "/usr/local/heroku" ]; then 
+  export PATH="/usr/local/heroku/bin:$PATH"
+done
+
+ssh-agent && ssh-add
