@@ -81,8 +81,8 @@ fi
 
 
 ### Added by the Heroku Toolbelt
-if [ -d "/usr/local/heroku" ]; then 
+if [ -d "/usr/local/heroku" ]; then
   export PATH="/usr/local/heroku/bin:$PATH"
-done
+fi
 
 ssh-agent && ssh-add
