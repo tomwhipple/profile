@@ -10,8 +10,15 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 
-Plugin 'atom/fuzzy-finder'
-
 call vundle#end()
 filetype plugin indent on
+
+
+" ==== Plugin config
+
+map <silent> <LocalLeader>nf :NERDTreeFind<CR>
+map <silent> <LocalLeader>nr :NERDTree<CR>
+map <silent> <LocalLeader>nt :NERDTreeToggle<CR>
+
+map <silent> <leader>ff :CommandT<CR>
 
