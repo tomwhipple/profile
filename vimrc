@@ -10,6 +10,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 
+Plugin 'vim-scripts/c.vim'
+
 call vundle#end()
 filetype plugin indent on
 
