@@ -46,6 +46,13 @@ if [ -d "$GOHOME" ]; then
 	fi
 fi
 
+CUDA_HOME=/usr/local/cuda
+if [ -d "$CUDA_HOME" ]; then
+  export CUDA_HOME
+  export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:$CUDA_HOME/lib"
+  export PATH="$CUDA_HOME/bin:$PATH"
+fi
+
 TM_RST2HTML=`which rst2html.py`
 if [ "$TM_RST2HTML" ]; then
 	export TM_RST2HTML
