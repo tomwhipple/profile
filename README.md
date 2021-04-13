@@ -1,7 +1,7 @@
 profile
 =======
 
-One bash profile to rule them all!
+One bash profile to rule them all! (but maybe just for me?)
 
 Setup
 -----
