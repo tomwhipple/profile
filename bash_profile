@@ -22,7 +22,7 @@ if [ -d $MYSQL_HOME ]; then
 	export PATH=$PATH:$MYSQL_HOME/bin
 fi
 
-PYTHON_VER=`python -c 'import sys; print "{0}.{1}".format(sys.version_info[0],sys.version_info[1])'`
+PYTHON_VER=`python -c 'import sys; print("{0}.{1}".format(sys.version_info[0],sys.version_info[1]))'`
 if [[ "$PYTHON_VER" != "" ]]; then
 	if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
 		# typical
