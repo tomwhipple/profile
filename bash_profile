@@ -1,3 +1,4 @@
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 if [ -d "$HOME/android-sdk-macosx" ]; then
 	export ANDROID_HOME=$HOME/android-sdk-macosx
@@ -88,6 +89,10 @@ fi
 ### Added by the Heroku Toolbelt
 if [ -d "/usr/local/heroku" ]; then
   export PATH="/usr/local/heroku/bin:$PATH"
+fi
+
+if [ -f "/opt/homebrew/bin/brew" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 ssh-agent && ssh-add
