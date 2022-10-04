@@ -2,7 +2,7 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 
 NVIM_PATH=`which nvim`
 if [ -x "$NVIM_PATH" ]; then
-  alias vim nvim
+  alias vim=nvim
 else
   echo "nvim not installed"
 fi
