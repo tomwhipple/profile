@@ -1,5 +1,16 @@
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
+NVIM_PATH=`which nvim`
+if [ -x "$NVIM_PATH" ]; then
+  alias vim nvim
+else
+  echo "nvim not installed"
+fi
+
+export EDITOR=vim
+export VISUAL=$EDITOR
+
+set -o vi
 
 if [ -d $MYSQL_HOME ]; then
 	export PATH=$PATH:$MYSQL_HOME/bin
@@ -42,8 +53,6 @@ fi
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 export PS1='\[\033[00;33m\]\t\n\[\033[00;37m\]\u@\h\[\033[00m\]:\[\033[00;36m\]\W\[\033[00m\]\[\033[00;33m\]$(__git_ps1 " (%s)")\[\033[00m\]\$ '
-
-set -o vi
 
 if [ `which rbenv` ]; then
     eval "$(rbenv init -)"
