@@ -64,12 +64,13 @@ if [ -d "/usr/local/heroku" ]; then
   export PATH="/usr/local/heroku/bin:$PATH"
 fi
 
-
 ssh-agent && ssh-add
 
-if [ -d "$HOME/.asdf" ]; then
-	source $HOME/.asdf/asdf.sh
-	source $HOME/.asdf/completions/asdf.bash
+if [ -d '/opt/homebrew/opt/asdf/libexec/' ]; then
+	. /opt/homebrew/opt/asdf/libexec/asdf.sh
+elif [ -d "$HOME/.asdf" ]; then
+	. $HOME/.asdf/asdf.sh
+	. $HOME/.asdf/completions/asdf.bash
 fi
 
 # The next line updates PATH for the Google Cloud SDK.
