@@ -66,7 +66,9 @@ fi
 
 ssh-agent && ssh-add
 
-if [ -d '/opt/homebrew/opt/asdf/libexec/' ]; then
+if [ -d '/usr/local/opt/asdf/libexec/' ]; then
+	. /usr/local/opt/asdf/libexec/asdf.sh
+elif [ -d '/opt/homebrew/opt/asdf/libexec/' ]; then
 	. /opt/homebrew/opt/asdf/libexec/asdf.sh
 elif [ -d "$HOME/.asdf" ]; then
 	. $HOME/.asdf/asdf.sh
