@@ -83,3 +83,7 @@ if [ -f '/Users/tw/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/tw/go
 
 export PATH="/Users/tw/.local/share/solana/install/active_release/bin:$PATH"
 
+
+# Created by `pipx` on 2022-11-19 23:34:05
+export PATH="$PATH:/Users/tw/.local/bin"
+export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
