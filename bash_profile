@@ -1,5 +1,33 @@
+
+#########
+# general
+#########
+
+# for OSX to stop nagging about zshell
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
+# PATH modification moved to .bashrc to avoid duplication
+# export PATH="$HOME/.local/bin:$PATH"
+
+# ssh
+if [ -z "$CLAUDECODE" ]; then
+  ssh-agent
+  ssh-add
+fi
+
+
+## bash & completion
+
+if [ -f $LOCAL/etc/bash_completion ]; then
+  source $LOCAL/etc/bash_completion
+fi
+
+if [ -f "/opt/homebrew/bin/brew" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+
+## nvim & editor
 NVIM_PATH=`which nvim`
 if [ -x "$NVIM_PATH" ]; then
   alias vim=nvim
@@ -10,12 +38,14 @@ fi
 export EDITOR=vim
 export VISUAL=$EDITOR
 
-set -o vi
-
 
 if [ -f "/opt/homebrew/bin/brew" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+
+####
+# git
+####
 
 if [[ `which brew` && -f "$(brew --prefix bash-git-prompt)/share/gitprompt.sh" ]]; then
   GIT_PROMPT_THEME=Default
@@ -30,26 +60,12 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 export PS1='\[\033[00;33m\]\t\n\[\033[00;37m\]\u@\h\[\033[00m\]:\[\033[00;36m\]\W\[\033[00m\]\[\033[00;33m\]$(__git_ps1 " (%s)")\[\033[00m\]\$ '
 
 
-ssh-agent && ssh-add
-
-if [ -d '/usr/local/opt/asdf/libexec/' ]; then
-	. /usr/local/opt/asdf/libexec/asdf.sh
-elif [ -d '/opt/homebrew/opt/asdf/libexec/' ]; then
-	. /opt/homebrew/opt/asdf/libexec/asdf.sh
-elif [ -d "$HOME/.asdf" ]; then
-	. $HOME/.asdf/asdf.sh
-	. $HOME/.asdf/completions/asdf.bash
-fi
-
 # The next line updates PATH for the Google Cloud SDK.
 #if [ -f '/Users/tw/google-cloud-sdk/path.bash.inc' ]; then . '/Users/tw/google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 #if [ -f '/Users/tw/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/tw/google-cloud-sdk/completion.bash.inc'; fi
 
-export PATH="/Users/tw/.local/share/solana/install/active_release/bin:$PATH"
-
 
 # Created by `pipx` on 2022-11-19 23:34:05
 export PATH="$PATH:/Users/tw/.local/bin"
-export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"

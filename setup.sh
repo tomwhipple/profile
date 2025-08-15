@@ -7,8 +7,7 @@ PROFILE_DIR=`pwd -P`
 
 cd $HOME
 
-echo 'exec /bin/bash -l' > .profile
-ln -s "$PROFILE_DIR/bash_profile" .bash_profile
+#ln -s "$PROFILE_DIR/bash_profile" .bash_profile
 ln -s "$PROFILE_DIR/tmux.conf" .tmux.conf
 ln -s "$PROFILE_DIR/vimrc" .vimrc
 

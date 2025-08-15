@@ -1,0 +1,84 @@
+
+#########
+# application specific dev tools
+########
+
+## asdf
+
+if [ -d '/opt/homebrew/opt/asdf/libexec/' ]; then
+	. /opt/homebrew/opt/asdf/libexec/asdf.sh
+elif [ -d "$HOME/.asdf" ]; then
+	. $HOME/.asdf/asdf.sh
+	. $HOME/.asdf/completions/asdf.bash
+fi
+
+
+## postgres
+export PATH="/opt/homebrew/opt/postgresql@12/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/postgresql@12/lib -L/opt/homebrew/opt/openssl/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/postgresql@12/include -I/opt/homebrew/opt/openssl/include"
+
+
+## mysql
+if [ -d $MYSQL_HOME ]; then
+	export PATH=$PATH:$MYSQL_HOME/bin
+fi
+
+## go
+GOHOME=$LOCAL/go
+if [ -d "$GOHOME" ]; then
+   export PATH="$GOHOME/bin:$PATH"
+   export GOHOME
+fi
+
+
+## ruby
+if [ `which rbenv` ]; then
+    eval "$(rbenv init -)"
+fi
+
+## python
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+export WORKON_HOME=$HOME/.virtualenvs
+
+# init pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi
+
+pyenv virtualenvwrapper
+
+export C_INCLUDE_PATH="$HOME/.pyenv/versions/3.9.17/include/python3.9/"
+export CPLUS_INCLUDE_PATH="$HOME/.pyenv/versions/3.9.17/include/python3.9/"
+
+
+## Cuda
+
+CUDA_HOME=/usr/local/cuda
+if [ -d "$CUDA_HOME" ]; then
+  export CUDA_HOME
+  export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:$CUDA_HOME/lib"
+  export PATH="$CUDA_HOME/bin:$PATH"
+fi
+
+## ??? 
+
+#TM_RST2HTML=`which rst2html.py`
+#if [ "$TM_RST2HTML" ]; then
+#        export TM_RST2HTML
+#fi
+
+### Added by the Heroku Toolbelt
+if [ -d "/usr/local/heroku" ]; then
+  export PATH="/usr/local/heroku/bin:$PATH"
+fi
+
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then . "$HOME/google-cloud-sdk/path.bash.inc"; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f "/Users/tw/google-cloud-sdk/completion.bash.inc" ]; then . "$HOME/google-cloud-sdk/completion.bash.inc"; fi
+
+#export PATH="$HOME/.local/bin:$HOME/.local/share/solana/install/active_release/bin:$PATH"
