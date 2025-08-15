@@ -6,10 +6,14 @@
 # for OSX to stop nagging about zshell
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-export PATH="$HOME/.local/bin:$PATH"
+# PATH modification moved to .bashrc to avoid duplication
+# export PATH="$HOME/.local/bin:$PATH"
 
 # ssh
-ssh-agent && ssh-add
+if [ -z "$CLAUDECODE" ]; then
+  ssh-agent
+  ssh-add
+fi
 
 
 ## bash & completion
@@ -33,8 +37,6 @@ fi
 
 export EDITOR=vim
 export VISUAL=$EDITOR
-
-set -o vi
 
 
 
