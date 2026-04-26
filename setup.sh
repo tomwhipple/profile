@@ -33,6 +33,17 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
   RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
+# oh-my-zsh custom plugins (third-party plugins referenced in zshrc)
+OMZ_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+clone_omz_plugin() {
+  local name="$1" repo="$2" dest="$OMZ_CUSTOM/plugins/$1"
+  if [ ! -d "$dest" ]; then
+    echo "installing omz plugin: $name"
+    git clone "$repo" "$dest"
+  fi
+}
+clone_omz_plugin zsh-direnv https://github.com/ptavares/zsh-direnv.git
+
 # vim-plug for nvim
 PLUG_VIM="$HOME/.local/share/nvim/site/autoload/plug.vim"
 if [ ! -f "$PLUG_VIM" ]; then
