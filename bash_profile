@@ -27,21 +27,9 @@ if [ -f "/opt/homebrew/bin/brew" ]; then
 fi
 
 
-## nvim & editor
-NVIM_PATH=`which nvim`
-if [ -x "$NVIM_PATH" ]; then
-  alias vim=nvim
-else
-  echo "nvim not installed"
-fi
-
 export EDITOR=vim
 export VISUAL=$EDITOR
 
-
-if [ -f "/opt/homebrew/bin/brew" ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
 
 ####
 # git
@@ -69,3 +57,5 @@ export PS1='\[\033[00;33m\]\t\n\[\033[00;37m\]\u@\h\[\033[00m\]:\[\033[00;36m\]\
 
 # Created by `pipx` on 2022-11-19 23:34:05
 export PATH="$PATH:/Users/tw/.local/bin"
+
+source "$HOME/profile/aliases"

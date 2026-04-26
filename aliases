@@ -1,0 +1,11 @@
+alias gitadog="git log --all --decorate --oneline --graph"
+
+if command -v nvim >/dev/null 2>&1; then
+  alias vim=nvim
+fi
+
+# pbcopy/pbpaste are native on macOS; alias to xclip on Linux when available
+if [[ "$OSTYPE" == linux* ]] && command -v xclip >/dev/null 2>&1; then
+  alias pbcopy="xclip -selection clipboard"
+  alias pbpaste="xclip -selection clipboard -o"
+fi
