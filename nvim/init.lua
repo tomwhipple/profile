@@ -1,5 +1,9 @@
 -- Basic Neovim configuration with vim-plug
 
+-- Required by nvim-tree: must be set before any plugin loads
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Plugin configuration
 vim.cmd([[
 call plug#begin()
