@@ -32,6 +32,9 @@ Plug 'hrsh7th/cmp-path'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 
+" Claude Code integration (pairs with the `claude` CLI)
+Plug 'coder/claudecode.nvim'
+
 call plug#end()
 ]])
 
@@ -140,6 +143,24 @@ vim.api.nvim_create_autocmd('LspAttach', {
     map('n', '<leader>cd', vim.diagnostic.open_float, 'Diagnostic float')
   end,
 })
+
+-- Claude Code: sends buffer/selection to the `claude` CLI in a terminal split
+-- and routes diff suggestions back into nvim for review. Prefix <leader>a to
+-- avoid clashes with the LSP <leader>c* mappings (code action, diagnostic).
+local has_claudecode, claudecode = pcall(require, 'claudecode')
+if has_claudecode then
+  claudecode.setup()
+  vim.keymap.set('n', '<leader>ac', '<cmd>ClaudeCode<cr>',          { desc = 'Toggle Claude' })
+  vim.keymap.set('n', '<leader>af', '<cmd>ClaudeCodeFocus<cr>',     { desc = 'Focus Claude pane' })
+  vim.keymap.set('n', '<leader>ab', '<cmd>ClaudeCodeAdd %<cr>',     { desc = 'Add buffer to Claude context' })
+  vim.keymap.set('v', '<leader>as', '<cmd>ClaudeCodeSend<cr>',      { desc = 'Send selection to Claude' })
+  vim.keymap.set('n', '<leader>al', function()
+    local line = vim.api.nvim_win_get_cursor(0)[1]
+    vim.cmd(string.format('%d,%dClaudeCodeSend', line, line))
+  end, { desc = 'Send current line to Claude' })
+  vim.keymap.set('n', '<leader>aa', '<cmd>ClaudeCodeDiffAccept<cr>', { desc = 'Accept Claude diff' })
+  vim.keymap.set('n', '<leader>ad', '<cmd>ClaudeCodeDiffDeny<cr>',   { desc = 'Deny Claude diff' })
+end
 
 -- Completion
 local has_cmp, cmp = pcall(require, 'cmp')

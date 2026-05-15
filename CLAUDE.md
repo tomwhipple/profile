@@ -46,6 +46,19 @@ LSP is wired up via `neovim/nvim-lspconfig` + `mason.nvim` + `mason-lspconfig.nv
 - On a fresh machine: `setup.sh`'s headless `:PlugInstall` pulls the plugins; the first interactive `nvim` launch triggers mason to install the servers (monitor with `:Mason`).
 - Elixir syntax is provided by `vim-polyglot` (no Elixir LSP is configured by default — add `elixirls` to `servers` if needed).
 
+## Claude Code in Neovim
+
+`coder/claudecode.nvim` is loaded in `init.lua` and pairs with the host's `claude` CLI — it boots a Claude session in a terminal split, lets you push the current buffer/selection/line as context, and round-trips proposed diffs back into nvim for accept/deny. Keymaps live under the `<leader>a` prefix to avoid clashing with the LSP `<leader>c*` mappings:
+
+- `<leader>ac` — toggle the Claude pane
+- `<leader>af` — focus the Claude pane
+- `<leader>ab` — add the current buffer to Claude's context
+- `<leader>as` — (visual) send the selection to Claude
+- `<leader>al` — send the current line to Claude
+- `<leader>aa` / `<leader>ad` — accept / deny a proposed diff
+
+The plugin requires the `claude` CLI to be on PATH; it's not installed by `setup.sh`. If `claude` is missing, the plugin still loads but the commands won't have anywhere to talk to.
+
 ## Things to leave alone
 
 - `archived_tools` and `bash_profile` are not sourced by the active zsh setup. They're kept as a paste-from reference for legacy environments (asdf, pyenv, rbenv, gcloud, heroku, CUDA, etc.). Don't wire them back in unless asked.
